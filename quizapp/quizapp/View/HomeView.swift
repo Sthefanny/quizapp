@@ -24,6 +24,10 @@ class HomeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit{
+        self.removeFromSuperview()
+    }
+    
     func buildHomeScreen() {
         self.buildTitle()
         self.buildButtons()
@@ -69,7 +73,7 @@ class HomeView: UIView {
         button.layer.borderColor = UIColor.black.cgColor
         button.setTitle("Criar Quiz", for: .normal)
         button.titleLabel?.font = UIFont(name: "Futura", size: 20)
-        button.addTarget(self, action: #selector(self.createButtonAction), for: .touchUpInside)
+        button.addTarget(self.parentFocusEnvironment, action: #selector(HomeController.onClickListener(object:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         
         createButtonConstraints = [
@@ -102,11 +106,6 @@ class HomeView: UIView {
         ]
         
         return button
-    }
-    
-    @objc func createButtonAction(_ sender:UIButton!)
-    {
-        print("Create Button tapped")
     }
     
     @objc func playButtonAction(_ sender:UIButton!)

@@ -26,15 +26,20 @@ class HomeController: UIViewController {
     }
     
     override var shouldAutorotate: Bool {
-           return true
-       }
+       return true
+    }
 
-       override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
-       }
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    return .portrait
+    }
 
-       override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-           return .portrait
-       }
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+       return .portrait
+    }
+    
+    @objc func onClickListener(object : UIButton!) {
+        let createViewController = CreateViewController()
+        self.navigationController?.pushViewController(createViewController, animated: true)
+    }
 }
 
