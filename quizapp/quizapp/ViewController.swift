@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     @IBOutlet var screenView: UIView!
     //    @IBOutlet weak var playButton: UIButton!
 //    @IBOutlet weak var createButton: UIButton!
