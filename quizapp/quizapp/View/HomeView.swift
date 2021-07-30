@@ -45,7 +45,7 @@ class HomeView: UIView {
         
         let constraints = [
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 150),
+            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
             label.widthAnchor.constraint(equalToConstant: self.frame.width),
             label.heightAnchor.constraint(equalToConstant: 100)
         ]
@@ -111,5 +111,9 @@ class HomeView: UIView {
     @objc func playButtonAction(_ sender:UIButton!)
     {
         print("Play Button tapped")
+    }
+    
+    func initialize() {
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 }

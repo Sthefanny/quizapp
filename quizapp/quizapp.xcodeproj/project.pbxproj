@@ -14,8 +14,9 @@
 		E5161F0626B1CDA200F6DAD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5161F0526B1CDA200F6DAD9 /* Assets.xcassets */; };
 		E5161F0926B1CDA200F6DAD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5161F0726B1CDA200F6DAD9 /* LaunchScreen.storyboard */; };
 		E5161F1326B1E0EE00F6DAD9 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5161F1226B1E0EE00F6DAD9 /* CloudKit.framework */; };
-		E55509D626B47B6200BE128B /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55509D526B47B6200BE128B /* CreateViewController.swift */; };
+		E55509D626B47B6200BE128B /* CreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55509D526B47B6200BE128B /* CreateController.swift */; };
 		E55509DE26B4815F00BE128B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55509DD26B4815F00BE128B /* HomeView.swift */; };
+		E55509E026B4AA8800BE128B /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55509DF26B4AA8800BE128B /* CreateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,8 +30,9 @@
 		E5161F0A26B1CDA200F6DAD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5161F1026B1E09100F6DAD9 /* quizapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = quizapp.entitlements; sourceTree = "<group>"; };
 		E5161F1226B1E0EE00F6DAD9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		E55509D526B47B6200BE128B /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		E55509D526B47B6200BE128B /* CreateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateController.swift; sourceTree = "<group>"; };
 		E55509DD26B4815F00BE128B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E55509DF26B4AA8800BE128B /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				E5161EFD26B1CD9F00F6DAD9 /* HomeController.swift */,
-				E55509D526B47B6200BE128B /* CreateViewController.swift */,
+				E55509D526B47B6200BE128B /* CreateController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				E55509DD26B4815F00BE128B /* HomeView.swift */,
+				E55509DF26B4AA8800BE128B /* CreateView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,8 +177,9 @@
 			files = (
 				E5161EFE26B1CD9F00F6DAD9 /* HomeController.swift in Sources */,
 				E5161EFA26B1CD9F00F6DAD9 /* AppDelegate.swift in Sources */,
-				E55509D626B47B6200BE128B /* CreateViewController.swift in Sources */,
+				E55509D626B47B6200BE128B /* CreateController.swift in Sources */,
 				E55509DE26B4815F00BE128B /* HomeView.swift in Sources */,
+				E55509E026B4AA8800BE128B /* CreateView.swift in Sources */,
 				E5161F0426B1CD9F00F6DAD9 /* quizapp.xcdatamodeld in Sources */,
 				E5161EFC26B1CD9F00F6DAD9 /* SceneDelegate.swift in Sources */,
 			);

@@ -18,7 +18,16 @@ class HomeController: UIViewController {
         home = HomeView(frame: screenSize)
         self.view.addSubview(home)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -38,7 +47,7 @@ class HomeController: UIViewController {
     }
     
     @objc func onClickListener(object : UIButton!) {
-        let createViewController = CreateViewController()
+        let createViewController = CreateController()
         self.navigationController?.pushViewController(createViewController, animated: true)
     }
 }
