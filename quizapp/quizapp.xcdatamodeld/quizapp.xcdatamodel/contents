@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20D80" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Option" representedClassName="Option" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="isCorrect" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <relationship name="question_options" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="question_options" inverseEntity="Question"/>
+    </entity>
+    <entity name="Question" representedClassName="Question" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <relationship name="question_options" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Option" inverseName="question_options" inverseEntity="Option"/>
+        <relationship name="question_quiz" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quiz" inverseName="question_quiz" inverseEntity="Quiz"/>
+    </entity>
+    <entity name="Quiz" representedClassName="Quiz" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <relationship name="question_quiz" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="question_quiz" inverseEntity="Question"/>
+        <relationship name="result_quiz" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Result" inverseName="result_quiz" inverseEntity="Result"/>
+    </entity>
+    <entity name="Result" representedClassName="Result" syncable="YES" codeGenerationType="class">
+        <attribute name="correctQuantity" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <relationship name="result_quiz" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quiz" inverseName="result_quiz" inverseEntity="Quiz"/>
+    </entity>
+    <elements>
+        <element name="Quiz" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="Question" positionX="-63" positionY="0" width="128" height="89"/>
+        <element name="Option" positionX="-45" positionY="36" width="128" height="89"/>
+        <element name="Result" positionX="-36" positionY="54" width="128" height="89"/>
+    </elements>
+</model>
