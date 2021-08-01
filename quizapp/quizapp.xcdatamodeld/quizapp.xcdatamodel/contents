@@ -16,6 +16,7 @@
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="name" attributeType="String" defaultValueString=""/>
         <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="question_quiz" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="question_quiz" inverseEntity="Question"/>
         <relationship name="result_quiz" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Result" inverseName="result_quiz" inverseEntity="Result"/>
     </entity>
@@ -28,7 +29,7 @@
     <elements>
         <element name="Option" positionX="-45" positionY="36" width="128" height="89"/>
         <element name="Question" positionX="-63" positionY="0" width="128" height="89"/>
-        <element name="Quiz" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="Quiz" positionX="-63" positionY="-18" width="128" height="119"/>
         <element name="Result" positionX="-36" positionY="54" width="128" height="89"/>
     </elements>
 </model>

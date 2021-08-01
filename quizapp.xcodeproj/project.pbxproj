@@ -14,9 +14,12 @@
 		E55509F726B4B89D00BE128B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55509F626B4B89D00BE128B /* Persistence.swift */; };
 		E55509FA26B4B89D00BE128B /* quizapp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E55509F826B4B89D00BE128B /* quizapp.xcdatamodeld */; };
 		E581877426B4BA0C0032EF64 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E581877326B4BA0C0032EF64 /* HomeView.swift */; };
-		E581877626B4C5ED0032EF64 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E581877526B4C5ED0032EF64 /* CreateView.swift */; };
+		E581877626B4C5ED0032EF64 /* CreateEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E581877526B4C5ED0032EF64 /* CreateEditView.swift */; };
 		E5A51CCD26B7023700E9B389 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A51CCC26B7023700E9B389 /* ImagePicker.swift */; };
 		E5A51CD126B71FB900E9B389 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A51CD026B71FB900E9B389 /* QuizModel.swift */; };
+		E5A51CD326B7303D00E9B389 /* ListQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A51CD226B7303D00E9B389 /* ListQuizView.swift */; };
+		E5A51CD526B73C3F00E9B389 /* ListQuizCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A51CD426B73C3F00E9B389 /* ListQuizCardView.swift */; };
+		E5A51CD726B741B300E9B389 /* FormatDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A51CD626B741B300E9B389 /* FormatDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +32,12 @@
 		E55509F926B4B89D00BE128B /* quizapp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = quizapp.xcdatamodel; sourceTree = "<group>"; };
 		E55509FB26B4B89D00BE128B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E581877326B4BA0C0032EF64 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		E581877526B4C5ED0032EF64 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
+		E581877526B4C5ED0032EF64 /* CreateEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditView.swift; sourceTree = "<group>"; };
 		E5A51CCC26B7023700E9B389 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		E5A51CD026B71FB900E9B389 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
+		E5A51CD226B7303D00E9B389 /* ListQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListQuizView.swift; sourceTree = "<group>"; };
+		E5A51CD426B73C3F00E9B389 /* ListQuizCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListQuizCardView.swift; sourceTree = "<group>"; };
+		E5A51CD626B741B300E9B389 /* FormatDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				E581877326B4BA0C0032EF64 /* HomeView.swift */,
-				E581877526B4C5ED0032EF64 /* CreateView.swift */,
+				E581877526B4C5ED0032EF64 /* CreateEditView.swift */,
+				E5A51CD226B7303D00E9B389 /* ListQuizView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -99,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				E5A51CCC26B7023700E9B389 /* ImagePicker.swift */,
+				E5A51CD426B73C3F00E9B389 /* ListQuizCardView.swift */,
+				E5A51CD626B741B300E9B389 /* FormatDate.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -185,9 +194,12 @@
 				E55509FA26B4B89D00BE128B /* quizapp.xcdatamodeld in Sources */,
 				E581877426B4BA0C0032EF64 /* HomeView.swift in Sources */,
 				E5A51CD126B71FB900E9B389 /* QuizModel.swift in Sources */,
+				E5A51CD726B741B300E9B389 /* FormatDate.swift in Sources */,
+				E5A51CD326B7303D00E9B389 /* ListQuizView.swift in Sources */,
 				E5A51CCD26B7023700E9B389 /* ImagePicker.swift in Sources */,
-				E581877626B4C5ED0032EF64 /* CreateView.swift in Sources */,
+				E581877626B4C5ED0032EF64 /* CreateEditView.swift in Sources */,
 				E55509EE26B4B89A00BE128B /* quizappApp.swift in Sources */,
+				E5A51CD526B73C3F00E9B389 /* ListQuizCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

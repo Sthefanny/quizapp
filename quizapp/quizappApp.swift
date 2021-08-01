@@ -13,8 +13,11 @@ struct quizappApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            NavigationView {
+                HomeView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }

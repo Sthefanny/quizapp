@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension CreateView {
+extension CreateEditView {
     final class QuizModel: ObservableObject {
         @Published var name: String = ""
         @Published var text: String = ""
@@ -15,6 +15,7 @@ extension CreateView {
         @Published var isPresentingImagePicker = false
         @Published var isSaved = false
         @Published var nameHasError = false
+        @Published var timestamp = Date()
         private(set) var sourceType: ImagePicker.SourceType = .camera
         
         func choosePhoto() {
