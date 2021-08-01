@@ -25,8 +25,7 @@ struct HomeView: View {
                 Spacer()
                 
                 VStack {
-                    NavigationLink(destination: CreateView()
-                                    .navigationBarTitle(Text("Criar Quiz"))) {
+                    NavigationLink(destination: CreateView()) {
                         Text("Criar Quiz")
                             .fontWeight(.bold)
                             .font(.system(size: 20))

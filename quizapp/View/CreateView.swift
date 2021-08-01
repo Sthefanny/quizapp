@@ -8,40 +8,52 @@
 import SwiftUI
 
 struct CreateView: View {
-    @StateObject var viewModel = ViewModel()
-    @State private var username: String = ""
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @StateObject var quizModel = QuizModel()
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack() {
-                Spacer()
-                VStack() {
-                    imageView(for: viewModel.selectedImage)
-                    imageControlBar()
+        NavigationView {
+            VStack(alignment: .leading) {
+                HStack() {
+                    Spacer()
+                    VStack() {
+                        imageView(for: quizModel.selectedImage)
+                        imageControlBar()
+                    }
+                    .sheet(isPresented: $quizModel.isPresentingImagePicker, content: {
+                        ImagePicker(sourceType: quizModel.sourceType, onImagePicked: quizModel.didSelectImage)
+                    })
+                    Spacer()
                 }
-                .sheet(isPresented: $viewModel.isPresentingImagePicker, content: {
-                    ImagePicker(sourceType: viewModel.sourceType, onImagePicked: viewModel.didSelectImage)
-                })
+                
+                HStack {
+                    Text("Nome")
+                        .font(.headline)
+                        .foregroundColor(quizModel.nameHasError ? .red : .black)
+                    TextField("Nome do Quiz", text: $quizModel.name)
+                }
+                .padding(.vertical, 50)
+                
+                HStack {
+                    Text("Descrição")
+                        .font(.headline)
+                    TextField("Descrição do Quiz", text: $quizModel.text)
+                }
                 Spacer()
+                
+                pageControlBar()
             }
-            
-            HStack {
-                Text("Nome")
-                    .font(.headline)
-                TextField("Nome do Quiz", text: $username)
-            }
-            .padding(.vertical, 50)
-            
-            HStack {
-                Text("Descrição")
-                    .font(.headline)
-                TextField("Descrição do Quiz", text: $username)
-            }
-            Spacer()
-            
-            pageControlBar()
+            .padding(.horizontal, 20)
         }
-        .padding(.horizontal, 20)
+        .navigationBarTitle(Text("Criar Quiz"))
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button("Salvar") {
+                    SaveData()
+                }
+            }
+        }
     }
     
     @ViewBuilder
@@ -62,14 +74,14 @@ struct CreateView: View {
     
     func imageControlBar() -> some View {
         HStack(spacing: 20) {
-            Button(action: viewModel.choosePhoto, label: {
+            Button(action: quizModel.choosePhoto, label: {
                 Image(systemName: "photo.fill")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 32, height: 32)
                     .foregroundColor(.black)
             })
-            Button(action: viewModel.takePhoto, label: {
+            Button(action: quizModel.takePhoto, label: {
                 Image(systemName: "camera.fill")
                     .resizable()
                     .scaledToFit()
@@ -86,37 +98,45 @@ struct CreateView: View {
                     print("Hello World tapped!")
                 }) {
                     Text("Criar Perguntas")
+                        .foregroundColor(quizModel.isSaved ? Color("PurpleButton") : Color("DisabledColor"))
             }
             Spacer()
             Button(action: {
                     print("Hello World tapped!")
                 }) {
                     Text("Criar Resultados")
+                        .foregroundColor(quizModel.isSaved ? Color("PurpleButton") : Color("DisabledColor"))
             }
             Spacer()
         }.padding()
     }
-}
+    
+    func SaveData() {
+        quizModel.nameHasError = false
 
-extension CreateView {
-    final class ViewModel: ObservableObject {
-        @Published var selectedImage: UIImage?
-        @Published var isPresentingImagePicker = false
-        private(set) var sourceType: ImagePicker.SourceType = .camera
-        
-        func choosePhoto() {
-            sourceType = .photoLibrary
-            isPresentingImagePicker = true
-        }
-        
-        func takePhoto() {
-            sourceType = .camera
-            isPresentingImagePicker = true
-        }
-        
-        func didSelectImage(_ image: UIImage?) {
-            selectedImage = image
-            isPresentingImagePicker = false
+        withAnimation {
+            if quizModel.name != "" {
+                quizModel.nameHasError = false
+                let imageData = quizModel.selectedImage?.pngData()
+                let newQuiz = Quiz(context: viewContext)
+                newQuiz.name = quizModel.name
+                newQuiz.text = quizModel.text
+                newQuiz.image = imageData
+
+                do {
+                    try viewContext.save()
+                    print(NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).last!);
+                    quizModel.isSaved = true
+                } catch {
+                    // Replace this implementation with code to handle the error appropriately.
+                    // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    let nsError = error as NSError
+                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                }
+            }
+            else {
+                quizModel.nameHasError = true
+            }
         }
     }
 }
