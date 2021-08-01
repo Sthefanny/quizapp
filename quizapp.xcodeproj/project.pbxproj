@@ -15,6 +15,7 @@
 		E55509FA26B4B89D00BE128B /* quizapp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E55509F826B4B89D00BE128B /* quizapp.xcdatamodeld */; };
 		E581877426B4BA0C0032EF64 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E581877326B4BA0C0032EF64 /* HomeView.swift */; };
 		E581877626B4C5ED0032EF64 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E581877526B4C5ED0032EF64 /* CreateView.swift */; };
+		E5A51CCD26B7023700E9B389 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A51CCC26B7023700E9B389 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		E55509FB26B4B89D00BE128B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E581877326B4BA0C0032EF64 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E581877526B4C5ED0032EF64 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
+		E5A51CCC26B7023700E9B389 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		E55509EC26B4B89A00BE128B /* quizapp */ = {
 			isa = PBXGroup;
 			children = (
+				E5A51CCE26B7051300E9B389 /* Component */,
 				E581877226B4B9F50032EF64 /* View */,
 				E55509ED26B4B89A00BE128B /* quizappApp.swift */,
 				E55509EF26B4B89A00BE128B /* ContentView.swift */,
@@ -87,6 +90,14 @@
 				E581877526B4C5ED0032EF64 /* CreateView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E5A51CCE26B7051300E9B389 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				E5A51CCC26B7023700E9B389 /* ImagePicker.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +173,7 @@
 				E55509F026B4B89A00BE128B /* ContentView.swift in Sources */,
 				E55509FA26B4B89D00BE128B /* quizapp.xcdatamodeld in Sources */,
 				E581877426B4BA0C0032EF64 /* HomeView.swift in Sources */,
+				E5A51CCD26B7023700E9B389 /* ImagePicker.swift in Sources */,
 				E581877626B4C5ED0032EF64 /* CreateView.swift in Sources */,
 				E55509EE26B4B89A00BE128B /* quizappApp.swift in Sources */,
 			);
