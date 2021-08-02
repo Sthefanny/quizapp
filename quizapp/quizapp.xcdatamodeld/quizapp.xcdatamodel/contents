@@ -4,31 +4,32 @@
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="isCorrect" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="text" optional="YES" attributeType="String"/>
-        <relationship name="question_options" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="question_options" inverseEntity="Question"/>
+        <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="options" inverseEntity="Question"/>
     </entity>
     <entity name="Question" representedClassName="Question" syncable="YES" codeGenerationType="class">
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="text" optional="YES" attributeType="String"/>
-        <relationship name="question_options" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Option" inverseName="question_options" inverseEntity="Option"/>
-        <relationship name="question_quiz" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quiz" inverseName="question_quiz" inverseEntity="Quiz"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="options" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Option" inverseName="question" inverseEntity="Option"/>
+        <relationship name="quiz" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quiz" inverseName="question" inverseEntity="Quiz"/>
     </entity>
     <entity name="Quiz" representedClassName="Quiz" syncable="YES" codeGenerationType="class">
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="name" attributeType="String" defaultValueString=""/>
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="question_quiz" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="question_quiz" inverseEntity="Question"/>
-        <relationship name="result_quiz" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Result" inverseName="result_quiz" inverseEntity="Result"/>
+        <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="quiz" inverseEntity="Question"/>
+        <relationship name="result" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Result" inverseName="quiz" inverseEntity="Result"/>
     </entity>
     <entity name="Result" representedClassName="Result" syncable="YES" codeGenerationType="class">
         <attribute name="correctQuantity" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="text" optional="YES" attributeType="String"/>
-        <relationship name="result_quiz" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quiz" inverseName="result_quiz" inverseEntity="Quiz"/>
+        <relationship name="quiz" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quiz" inverseName="result" inverseEntity="Quiz"/>
     </entity>
     <elements>
         <element name="Option" positionX="-45" positionY="36" width="128" height="89"/>
-        <element name="Question" positionX="-63" positionY="0" width="128" height="89"/>
+        <element name="Question" positionX="-63" positionY="0" width="128" height="104"/>
         <element name="Quiz" positionX="-63" positionY="-18" width="128" height="119"/>
         <element name="Result" positionX="-36" positionY="54" width="128" height="89"/>
     </elements>

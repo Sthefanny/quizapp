@@ -7,61 +7,66 @@
 
 import SwiftUI
 
-struct CreateEditView: View {
+struct CreateEditQuizView: View {
     @Environment(\.managedObjectContext) private var viewContext
     let quiz: Quiz?
     
     @StateObject var quizModel = QuizModel()
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack() {
-                Spacer()
-                VStack() {
-                    imageView(for: quizModel.selectedImage)
-                    imageControlBar()
+        VStack {
+            ScrollView {
+                VStack(alignment: .leading) {
+                    HStack() {
+                        Spacer()
+                        VStack() {
+                            imageView(for: quizModel.selectedImage)
+                            imageControlBar()
+                        }
+                        .sheet(isPresented: $quizModel.isPresentingImagePicker, content: {
+                            ImagePicker(sourceType: quizModel.sourceType, onImagePicked: quizModel.didSelectImage)
+                        })
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Text("Nome")
+                            .font(.headline)
+                            .foregroundColor(quizModel.nameHasError ? .red : .black)
+                        TextField("Nome do Quiz", text: $quizModel.name)
+                    }
+                    .padding(.vertical, 50)
+                    
+                    HStack {
+                        Text("Descrição")
+                            .font(.headline)
+                        TextField("Descrição do Quiz", text: $quizModel.text)
+                    }
                 }
-                .sheet(isPresented: $quizModel.isPresentingImagePicker, content: {
-                    ImagePicker(sourceType: quizModel.sourceType, onImagePicked: quizModel.didSelectImage)
+                .padding(.horizontal, 20)
+                .navigationBarTitle(Text(quiz == nil ? "Criar Quiz" : "Editar Quiz"))
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        Button("Salvar") {
+                            SaveData()
+                        }
+                    }
+                }
+                .onAppear(perform: {
+                    if quiz != nil {
+                        quizModel.name = quiz!.name ?? ""
+                        quizModel.text = quiz!.text ?? ""
+                        quizModel.timestamp = quiz!.timestamp ?? Date()
+                        quizModel.selectedImage = quiz!.image != nil ? UIImage(data: quiz!.image!) : nil
+                        quizModel.isSaved = true
+                    }
                 })
-                Spacer()
             }
             
-            HStack {
-                Text("Nome")
-                    .font(.headline)
-                    .foregroundColor(quizModel.nameHasError ? .red : .black)
-                TextField("Nome do Quiz", text: $quizModel.name)
-            }
-            .padding(.vertical, 50)
-            
-            HStack {
-                Text("Descrição")
-                    .font(.headline)
-                TextField("Descrição do Quiz", text: $quizModel.text)
-            }
             Spacer()
             
             pageControlBar()
         }
-        .padding(.horizontal, 20)
-        .navigationBarTitle(Text("Criar Quiz"))
-        .toolbar {
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button("Salvar") {
-                    SaveData()
-                }
-            }
-        }
-        .onAppear(perform: {
-            if quiz != nil {
-                quizModel.name = quiz!.name ?? ""
-                quizModel.text = quiz!.text ?? ""
-                quizModel.timestamp = quiz!.timestamp ?? Date()
-                quizModel.selectedImage = quiz!.image != nil ? UIImage(data: quiz!.image!) : nil
-                quizModel.isSaved = true
-            }
-        })
     }
     
     @ViewBuilder
@@ -103,11 +108,11 @@ struct CreateEditView: View {
     func pageControlBar() -> some View {
         HStack() {
             Spacer()
-            Button(action: {
-                    print("Hello World tapped!")
-                }) {
-                    Text("Criar Perguntas")
-                        .foregroundColor(quizModel.isSaved ? Color("PurpleButton") : Color("DisabledColor"))
+            NavigationLink(destination: CreateEditQuestionsView(quiz: quiz, question: nil)
+                            .environment(\.managedObjectContext, viewContext)
+            ) {
+                Text("Criar Perguntas")
+                    .foregroundColor(quizModel.isSaved ? Color("PurpleButton") : Color("DisabledColor"))
             }
             Spacer()
             Button(action: {
@@ -152,6 +157,6 @@ struct CreateEditView: View {
 
 struct CreateView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateEditView(quiz: Quiz())
+        CreateEditQuizView(quiz: Quiz())
     }
 }

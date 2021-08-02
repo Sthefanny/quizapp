@@ -20,7 +20,7 @@ struct ListQuizView: View {
     var body: some View {
             List {
                 ForEach(quizes) { quiz in
-                    NavigationLink(destination: CreateEditView(quiz: quiz)
+                    NavigationLink(destination: CreateEditQuizView(quiz: quiz)
                                     .environment(\.managedObjectContext, viewContext)
                     ) {
                         ListQuizCardView(quiz: quiz)
@@ -31,7 +31,7 @@ struct ListQuizView: View {
             .listStyle(InsetGroupedListStyle())
         .navigationBarTitle(Text("Lista de Quiz"))
         .toolbar {
-            NavigationLink(destination: CreateEditView(quiz: nil)
+            NavigationLink(destination: CreateEditQuizView(quiz: nil)
                             .environment(\.managedObjectContext, viewContext)
             ) {
                 Label("Adicionar Quiz", systemImage: "plus")
